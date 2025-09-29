@@ -1,0 +1,85 @@
+
+<div class="container my-4 weather-container">
+  <!-- Input Section -->
+  <div class="row mb-4 justify-content-center">
+    <div class="col-12 col-md-6">
+      <div class="input-group">
+        <input 
+          type="text" 
+          [(ngModel)]="cityName" 
+          class="form-control" 
+          placeholder="Enter city name">
+        <button 
+          (click)="getWeather()" 
+          type="button" 
+          class="btn btn-primary">
+          Get Weather
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weather Details -->
+  <div *ngIf="weatherData" class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-3">
+            Weather in {{ weatherData.name }}, {{ weatherData.sys?.country }}
+          </h2>
+          <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-6 mb-4 mb-md-0">
+              <div class="text-center mb-3">
+                <img 
+                  *ngIf="weatherData.weather[0]?.icon"
+                  [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" 
+                  alt="Weather icon"
+                  class="img-fluid">
+              </div>
+              <h5>Main Weather</h5>
+              <p class="mb-3">{{ weatherData.weather[0]?.main }} - {{ weatherData.weather[0]?.description }}</p>
+
+              <h5>Temperature & Humidity</h5>
+              <ul class="list-unstyled">
+                <li>Temperature: {{ weatherData.main?.temp }}°F</li>
+                <li>Feels like: {{ weatherData.main?.feels_like }}°F</li>
+                <li>Min: {{ weatherData.main?.temp_min }}°F, Max: {{ weatherData.main?.temp_max }}°F</li>
+                <li>Humidity: {{ weatherData.main?.humidity }}%</li>
+                <li>Pressure: {{ weatherData.main?.pressure }} hPa</li>
+              </ul>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+              <h5>Wind & Visibility</h5>
+              <ul class="list-unstyled mb-3">
+                <li>Wind: {{ weatherData.wind?.speed }} m/s, Direction: {{ weatherData.wind?.deg }}°</li>
+                <li>Visibility: {{ weatherData.visibility }} meters</li>
+              </ul>
+
+              <h5>Clouds</h5>
+              <p class="mb-3">Cloudiness: {{ weatherData.clouds?.all }}%</p>
+
+              <h5>Sunrise & Sunset</h5>
+              <p class="mb-3">
+                Sunrise: {{ weatherData.sys?.sunrise * 1000 | date:'shortTime' }} <br>
+                Sunset: {{ weatherData.sys?.sunset * 1000 | date:'shortTime' }}
+              </p>
+
+              <h5>Coordinates</h5>
+              <p class="mb-3">Latitude: {{ weatherData.coord?.lat }}, Longitude: {{ weatherData.coord?.lon }}</p>
+
+              <h5>Other Info</h5>
+              <ul class="list-unstyled">
+                <li>Base: {{ weatherData.base }}</li>
+                <li>City ID: {{ weatherData.id }}</li>
+                <li>Time Zone: UTC {{ weatherData.timezone / 3600 >= 0 ? '+' : ''}}{{ weatherData.timezone / 3600 }}</li>
+              </ul>
+            </div>
+          </div> <!-- row -->
+        </div> <!-- card-body -->
+      </div> <!-- card -->
+    </div>
+  </div>
+</div>

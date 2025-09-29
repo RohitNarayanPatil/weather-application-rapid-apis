@@ -1,0 +1,123 @@
+// .sidebar {
+//     width: 220px;
+//     min-height: 100vh;
+//     border-right: 1px solid #ddd;
+// }
+
+// .sidebar ul li {
+//     padding: 10px 0;
+// }
+
+// .sidebar ul li a {
+//     text-decoration: none;
+//     color: #333;
+// }
+
+// .sidebar ul li a.active {
+//     font-weight: bold;
+//     color: #007bff;
+// }
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  border-right: 1px solid #e5e5e5;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #007bff;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      list-style: none;
+      margin-bottom: 10px;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 15px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        color: #333;
+        border-radius: 8px;
+        transition: background 0.3s, color 0.3s;
+
+        &:hover {
+          background: #007bff;
+          color: #fff;
+        }
+
+        &.active {
+          background: #007bff;
+          color: #fff;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .sidebar {
+    transform: translateX(0) !important;
+    position: relative;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transform: translateX(-100%);
+    z-index: 1050;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .toggle-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background: #0056b3;
+    }
+  }
+
+  .close-btn {
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #555;
+    float: right;
+    margin-bottom: 20px;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}

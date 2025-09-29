@@ -1,0 +1,54 @@
+<div class="container my-4">
+  <!-- Input Section -->
+  <div class="row mb-4 justify-content-center">
+    <div class="col-12 col-md-3 mb-2">
+      <input type="number" [(ngModel)]="latitude" class="form-control" placeholder="Latitude">
+    </div>
+    <div class="col-12 col-md-3 mb-2">
+      <input type="number" [(ngModel)]="longitude" class="form-control" placeholder="Longitude">
+    </div>
+    <div class="col-12 col-md-2">
+      <button (click)="getForecast()" class="btn btn-primary w-100">Get Forecast</button>
+    </div>
+  </div>
+
+  <!-- Forecast Table -->
+  <div *ngIf="forecastData" class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <div class="card shadow-sm p-3">
+        <h2 class="text-center mb-4">5-Day Forecast</h2>
+        <div class="table-responsive table-fixed-height">
+          <table class="table table-bordered table-hover text-center mb-0">
+            <thead class="table-light sticky-top">
+              <tr>
+                <th>Date & Time</th>
+                <th>Temp (°K)</th>
+                <th>Feels Like (°K)</th>
+                <th>Humidity (%)</th>
+                <th>Weather</th>
+                <th>Wind (m/s)</th>
+                <th>Clouds (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of forecastData.list">
+                <td>{{ item.dt * 1000 | date:'short' }}</td>
+                <td>{{ item.main?.temp }}</td>
+                <td>{{ item.main?.feels_like }}</td>
+                <td>{{ item.main?.humidity }}</td>
+                <td>
+                  {{ item.weather[0]?.main }} - {{ item.weather[0]?.description }}
+                  <img *ngIf="item.weather[0]?.icon"
+                       [src]="'https://openweathermap.org/img/wn/' + item.weather[0].icon + '.png'"
+                       alt="icon">
+                </td>
+                <td>{{ item.wind?.speed }} ({{ item.wind?.deg }}°)</td>
+                <td>{{ item.clouds?.all }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

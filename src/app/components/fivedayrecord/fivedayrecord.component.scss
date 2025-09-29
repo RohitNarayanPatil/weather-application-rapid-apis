@@ -1,0 +1,15 @@
+.table-fixed-height {
+  max-height: 400px;   /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+.table-fixed-height tbody tr {
+  display: table-row;
+}
+
+.table-fixed-height thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa; /* Matches Bootstrap table-light */
+  z-index: 10;
+}
