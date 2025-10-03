@@ -2,24 +2,25 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-fivedayrecord',
-  imports: [ CommonModule,
+  imports: [CommonModule,
     FormsModule, HttpClientModule],
   templateUrl: './fivedayrecord.component.html',
   styleUrl: './fivedayrecord.component.scss'
 })
 export class FivedayrecordComponent {
- latitude!: number;
+  latitude!: number;
   longitude!: number;
   forecastData: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) { }
 
   getForecast() {
     if (!this.latitude || !this.longitude) {
-      alert('Please enter both latitude and longitude!');
+      // alert('Please enter both latitude and longitude!');
+      this.toastr.warning('Please enter both latitude and longitude!', 'Validation');
       return;
     }
 
@@ -31,8 +32,10 @@ export class FivedayrecordComponent {
     });
 
     this.http.get(url, { headers }).subscribe({
-      next: (data) => this.forecastData = data,
-      error: (err) => console.error('Error fetching forecast:', err)
+      next: (data) => { this.forecastData = data, this.toastr.success('Weather data fetched successfully!', 'Success'); },
+      error: (err) => {
+        console.error('Error fetching forecast:', err), this.toastr.error('Failed to fetch weather data', 'Error');
+      }
     });
   }
 }

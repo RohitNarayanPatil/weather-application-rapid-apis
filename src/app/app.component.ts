@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,HeaderComponent, SidebarComponent,CommonModule],
+  imports: [RouterOutlet,HeaderComponent, SidebarComponent,CommonModule,ToastrModule],
     standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
