@@ -1,8 +1,9 @@
-<app-header></app-header>
+<app-header [isCollapsed]="isCollapsed" (toggle)="toggleSidebar()"></app-header>
+
 <div class="d-flex">
-  <app-sidebar></app-sidebar>
-  <div class="content flex-grow-1">
+  <app-sidebar [isCollapsed]="isCollapsed"></app-sidebar>
+
+  <div class="content flex-grow-1 p-3">
     <router-outlet></router-outlet>
   </div>
 </div>
-

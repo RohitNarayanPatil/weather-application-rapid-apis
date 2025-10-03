@@ -2,7 +2,48 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(135deg, #007bff, #00aaff); // blue gradient
+  padding: 10px 20px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: 'Orbitron', sans-serif;
+
 }
-.nav .nav-item {
-  margin-left: 15px;
+
+/* App title */
+.app-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-shadow: 0 0 6px #00f6ff, 0 0 12px #00f6ff;
+  margin: 0;
+}
+
+/* Toggle button */
+.btn-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 1.3rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 6px #00f6ff44;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    box-shadow: 0 0 12px #00f6ff;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 1.3rem;
+  }
+  .btn-toggle {
+    padding: 5px 10px;
+    font-size: 1.1rem;
+  }
 }

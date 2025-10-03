@@ -1,33 +1,22 @@
-<!-- <div class="sidebar bg-light p-3">
-    <h4>Menu</h4>
-    <ul class="list-unstyled">
-        <li><a routerLink="" routerLinkActive="active">🏠Weather by City</a></li>
-        <li><a routerLink="coordinates" routerLinkActive="active">🌍 Weather by Latitude/Longitude</a></li>
-        <li><a routerLink="five" routerLinkActive="active"> 📅 5-Day Weather Forecast</a></li>
-      
-    </ul>
-</div> -->
-<!-- Toggle Button (only visible on mobile) -->
-<!-- Toggle Button (only for mobile) -->
-<!-- Mobile toggle -->
-<button class="toggle-btn d-md-none" (click)="toggleSidebar()">
-  ☰ Menu
-</button>
-
-<!-- Sidebar -->
-<div class="sidebar" [class.open]="isDesktop || isOpen">
-  <div class="close-btn d-md-none" (click)="closeSidebar()">✖</div>
-  <h4>🌦 Weather Menu</h4>
-  <ul>
-    <li>
-      <a routerLink="" routerLinkActive="active" (click)="handleMenuClick()">🏠 Weather by City</a>
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/">
+        <span class="icon">🏠</span> 
+        <span class="text">Weather by City</span>
+      </a>
     </li>
-    <li>
-      <a routerLink="coordinates" routerLinkActive="active" (click)="handleMenuClick()">🌍 Weather by Latitude/Longitude</a>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/coordinates">
+        <span class="icon">🌍</span> 
+        <span class="text">Weather by Lat/Lng</span>
+      </a>
     </li>
-    <li>
-      <a routerLink="five" routerLinkActive="active" (click)="handleMenuClick()">📅 5-Day Forecast</a>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/five">
+        <span class="icon">📅</span> 
+        <span class="text">5-Day Forecast</span>
+      </a>
     </li>
   </ul>
 </div>
-

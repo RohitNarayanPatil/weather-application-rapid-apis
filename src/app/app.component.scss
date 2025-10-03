@@ -1,7 +1,26 @@
-.d-flex {
-  display: flex;
+/* Make the entire app take full height */
+html, body {
+  height: 100%;
+  margin: 0;
 }
+
+.main-container {
+  display: flex;
+  height: calc(100vh - 70px); /* subtract header height */
+  overflow: hidden; /* content scrolls internally */
+}
+
+/* Sidebar styles */
+app-sidebar {
+  height: 100%;
+  position: sticky;
+  top: 0;
+  // overflow-y: auto; /* scroll inside sidebar if content too long */
+}
+
+/* Content area scroll */
 .content {
-  padding: 20px;
-  width: 100%;
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
 }

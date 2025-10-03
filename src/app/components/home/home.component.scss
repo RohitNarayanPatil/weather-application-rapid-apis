@@ -1,0 +1,58 @@
+.weather-container {
+  font-family: 'Orbitron', sans-serif;
+
+  .futuristic-input {
+    input {
+      border-radius: 12px 0 0 12px;
+      border: 2px solid #007bff;
+      background: rgba(0,123,255,0.05);
+      color: #007bff;
+      transition: all 0.3s;
+
+      &:focus {
+        box-shadow: 0 0 10px #00aaff;
+        border-color: #00aaff;
+      }
+    }
+
+    button {
+      border-radius: 0 12px 12px 0;
+      background: #007bff;
+      color: white;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+
+      &:hover {
+        background: #00aaff;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .weather-card {
+    background: linear-gradient(135deg, #007bff11, #00aaff22);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+
+    .weather-icon {
+      width: 120px;
+      height: 120px;
+    }
+
+    .futuristic-details {
+      li {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(0,123,255,0.3);
+        transition: all 0.3s;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          color: #00f6ff;
+        }
+      }
+    }
+  }
+}
